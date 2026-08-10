@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
-import { colors, fontFamily, fontSize } from '../theme';
+import { Animated, Easing, View } from 'react-native';
+import { fontFamily, fontSize } from '../theme';
 
 type Props = {
   minDurationMs?: number;
@@ -35,22 +35,18 @@ export default function LoadingScreen({ minDurationMs = 1600, onFinished }: Prop
   }, [opacity, scale, minDurationMs, onFinished]);
 
   return (
-    <View style={styles.container}>
-      <Animated.Text style={[styles.logo, { transform: [{ scale }], opacity }]}>Trueoils</Animated.Text>
+    <View className="flex-1 items-center justify-center bg-primary">
+      <Animated.Text
+        style={{
+          fontFamily: fontFamily.script,
+          fontSize: fontSize.displayLg,
+          transform: [{ scale }],
+          opacity,
+        }}
+        className="text-cream"
+      >
+        Trueoils
+      </Animated.Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.primary,
-  },
-  logo: {
-    fontFamily: fontFamily.displayBold,
-    fontSize: fontSize.displayLg,
-    color: colors.cream,
-  },
-});

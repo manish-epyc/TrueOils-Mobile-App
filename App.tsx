@@ -1,22 +1,22 @@
+import './global.css';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useFonts, Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold } from '@expo-google-fonts/caveat';
-import { Lora_400Regular, Lora_500Medium, Lora_600SemiBold, Lora_700Bold } from '@expo-google-fonts/lora';
+import { useFonts, Inter_400Regular, Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';
 import HomeScreen from './src/screens/HomeScreen';
 import Header from './src/components/Header';
 import LoadingScreen from './src/screens/LoadingScreen';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Caveat_400Regular,
-    Caveat_500Medium,
-    Caveat_600SemiBold,
-    Caveat_700Bold,
-    Lora_400Regular,
-    Lora_500Medium,
-    Lora_600SemiBold,
-    Lora_700Bold,
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_700Bold,
+    ChickenHotty: require('./assets/fonts/ChickenHotty.ttf'),
+    'PlayfairDisplay-Regular': require('./assets/fonts/PlayfairDisplay-Regular.ttf'),
+    'PlayfairDisplay-Medium': require('./assets/fonts/PlayfairDisplay-Medium.ttf'),
+    'PlayfairDisplay-SemiBold': require('./assets/fonts/PlayfairDisplay-SemiBold.ttf'),
+    'PlayfairDisplay-Bold': require('./assets/fonts/PlayfairDisplay-Bold.ttf'),
   });
   const [minTimeElapsed, setMinTimeElapsed] = useState(false);
 

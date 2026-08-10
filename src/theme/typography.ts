@@ -1,16 +1,17 @@
-// Figma uses "Chicken Hotty" (display) and "TT Norms Pro Serif" (body) — both
-// custom/licensed fonts we don't have files for. Using close Google Font
-// substitutes (Caveat, Lora) until the real font files are provided.
+// Real brand fonts pulled from trueoils.in: Chicken Hotty (script/logo),
+// Playfair Display (serif headings, local files matching the site's exact
+// build), and Inter (body/UI text, via Google Fonts — open source, same font).
 export const fontFamily = {
-  displayRegular: 'Caveat_400Regular',
-  displayMedium: 'Caveat_500Medium',
-  displaySemiBold: 'Caveat_600SemiBold',
-  displayBold: 'Caveat_700Bold',
+  script: 'ChickenHotty',
 
-  bodyRegular: 'Lora_400Regular',
-  bodyMedium: 'Lora_500Medium',
-  bodyDemiBold: 'Lora_600SemiBold',
-  bodyBold: 'Lora_700Bold',
+  headingRegular: 'PlayfairDisplay-Regular',
+  headingMedium: 'PlayfairDisplay-Medium',
+  headingSemiBold: 'PlayfairDisplay-SemiBold',
+  headingBold: 'PlayfairDisplay-Bold',
+
+  bodyRegular: 'Inter_400Regular',
+  bodyMedium: 'Inter_500Medium',
+  bodyBold: 'Inter_700Bold',
 } as const;
 
 export const fontSize = {
@@ -19,7 +20,7 @@ export const fontSize = {
   base: 14,
   md: 15,
   lg: 20,
-  xl: 22,
-  display: 55,
-  displayLg: 58,
+  xl: 13, // heading token, reduced 40% from 22
+  display: 33, // heading token, reduced 40% from 55
+  displayLg: 35, // heading token, reduced 40% from 58
 } as const;
