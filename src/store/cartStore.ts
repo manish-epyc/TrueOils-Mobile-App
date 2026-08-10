@@ -9,6 +9,7 @@ type CartState = {
   lines: CartLine[];
   addLine: (merchandiseId: string, quantity?: number) => void;
   removeLine: (merchandiseId: string) => void;
+  updateLineQuantity: (merchandiseId: string, quantity: number) => void;
   clear: () => void;
 };
 
@@ -28,5 +29,12 @@ export const useCartStore = create<CartState>((set) => ({
     }),
   removeLine: (merchandiseId) =>
     set((state) => ({ lines: state.lines.filter((l) => l.merchandiseId !== merchandiseId) })),
+  updateLineQuantity: (merchandiseId, quantity) =>
+    set((state) => ({
+      lines:
+        quantity <= 0
+          ? state.lines.filter((l) => l.merchandiseId !== merchandiseId)
+          : state.lines.map((l) => (l.merchandiseId === merchandiseId ? { ...l, quantity } : l)),
+    })),
   clear: () => set({ lines: [] }),
 }));

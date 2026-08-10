@@ -1,22 +1,44 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors } from '../theme';
 import { useCartStore } from '../store/cartStore';
+import { RootStackParamList } from '../navigation/types';
 
-export default function Header() {
+type Props = {
+  showPromoBanner?: boolean;
+  showBackButton?: boolean;
+};
+
+export default function Header({ showPromoBanner = true, showBackButton = false }: Props) {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const cartCount = useCartStore((state) => state.lines.reduce((sum, l) => sum + l.quantity, 0));
 
   return (
     <SafeAreaView edges={['top']} className="bg-cream">
-      <View className="items-center bg-primary px-sm py-xs">
-        <Text className="font-body-regular text-xs text-cream">
-          The New Year's Sale <Text className="underline">Save 40%</Text> on all Products
-        </Text>
-      </View>
+      {showPromoBanner && (
+        <View className="items-center bg-primary px-sm py-xs">
+          <Text className="font-body-regular text-xs text-cream">
+            The New Year's Sale <Text className="underline">Save 40%</Text> on all Products
+          </Text>
+        </View>
+      )}
 
       <View className="flex-row items-center justify-between px-md py-sm">
-        <Text className="font-script text-xl text-primaryDark">Trueoils</Text>
+        <View className="flex-row items-center gap-sm">
+          {showBackButton && (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              className="h-9 w-9 items-center justify-center rounded-pill bg-primary/[0.06]"
+              accessibilityLabel="Go back"
+            >
+              <Ionicons name="arrow-back" size={20} color={colors.primaryDark} />
+            </TouchableOpacity>
+          )}
+          <Text className="font-script text-[28px] text-primaryDark">Trueoils</Text>
+        </View>
 
         <View className="flex-row items-center gap-sm">
           <TouchableOpacity
@@ -27,6 +49,7 @@ export default function Header() {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => navigation.navigate('Cart')}
             className="h-10 w-10 items-center justify-center rounded-pill bg-accent"
             accessibilityLabel="Cart"
           >

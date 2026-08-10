@@ -2,10 +2,17 @@ import './global.css';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts, Inter_400Regular, Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';
 import HomeScreen from './src/screens/HomeScreen';
-import Header from './src/components/Header';
+import ProductListingScreen from './src/screens/ProductListingScreen';
+import ProductDetailScreen from './src/screens/ProductDetailScreen';
+import CartScreen from './src/screens/CartScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
+import { RootStackParamList } from './src/navigation/types';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,8 +33,14 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <Header />
-      <HomeScreen />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="ProductListing" component={ProductListingScreen} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen name="Cart" component={CartScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
       <StatusBar style="auto" />
     </SafeAreaProvider>
   );

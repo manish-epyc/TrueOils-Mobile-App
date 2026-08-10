@@ -1,8 +1,13 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors } from '../../theme';
+import { RootStackParamList } from '../../navigation/types';
 
 export default function HeroBanner() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <View className="h-[480px] justify-end overflow-hidden bg-accent">
       <Image
@@ -21,6 +26,7 @@ export default function HeroBanner() {
         </Text>
 
         <TouchableOpacity
+          onPress={() => navigation.navigate('ProductListing')}
           className="mt-sm flex-row items-center gap-2 self-start rounded-xs bg-primary px-lg py-sm"
           activeOpacity={0.85}
         >
