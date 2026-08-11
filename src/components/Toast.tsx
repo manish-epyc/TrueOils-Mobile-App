@@ -32,21 +32,21 @@ export default function Toast() {
               flexDirection: 'row',
               alignItems: 'center',
               gap: 8,
-              backgroundColor: colors.primaryDark,
+              backgroundColor: colors.cream,
               borderWidth: 1,
-              borderColor: colors.accent,
+              borderColor: 'rgba(47,67,35,0.12)',
               borderRadius: 40,
-              paddingHorizontal: 20,
+              paddingHorizontal: 18,
               paddingVertical: 10,
               shadowColor: '#000',
-              shadowOpacity: 0.2,
-              shadowRadius: 8,
-              shadowOffset: { width: 0, height: 4 },
-              elevation: 6,
+              shadowOpacity: 0.12,
+              shadowRadius: 6,
+              shadowOffset: { width: 0, height: 3 },
+              elevation: 4,
             }}
           >
-            <Ionicons name="checkmark-circle" size={16} color={colors.accent} />
-            <Text style={{ color: colors.cream, fontSize: 13 }}>{message}</Text>
+            <Ionicons name="checkmark-circle" size={16} color={colors.primary} />
+            <Text style={{ color: colors.textDark, fontSize: 13 }}>{message}</Text>
           </Animated.View>
         </SafeAreaView>
       </View>
