@@ -1,4 +1,5 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image } from 'expo-image';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { collections } from '../../data/collections';
@@ -29,7 +30,7 @@ export default function CollectionsSection() {
             activeOpacity={0.75}
           >
             <View className="h-20 w-20 overflow-hidden rounded-full border border-primary/10 bg-creamMuted">
-              <Image source={{ uri: collection.image }} className="h-full w-full" resizeMode="cover" />
+              <Image source={{ uri: collection.image }} className="h-full w-full" contentFit="cover" />
             </View>
             <Text className="text-center font-body-medium text-xs text-textDark" numberOfLines={2}>
               {collection.title}

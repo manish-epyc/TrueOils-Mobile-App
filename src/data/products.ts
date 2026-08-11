@@ -318,25 +318,21 @@ export const products: Product[] = [
   },
 ];
 
+export function getDiscountPercent(price: number, compareAtPrice: number | undefined): number {
+  if (!compareAtPrice || compareAtPrice <= price) return 0;
+  return Math.round(((compareAtPrice - price) / compareAtPrice) * 100);
+}
+
 export const bestSellerProducts = [products[3], products[1], products[4], products[0]];
 export const topRatedProducts = [...products].sort((a, b) => b.rating - a.rating).slice(0, 4);
 export const topDiscountedProducts = [...products]
   .filter((p) => p.compareAtPrice && p.compareAtPrice > p.price)
-  .sort((a, b) => {
-    const discountA = ((a.compareAtPrice! - a.price) / a.compareAtPrice!) * 100;
-    const discountB = ((b.compareAtPrice! - b.price) / b.compareAtPrice!) * 100;
-    return discountB - discountA;
-  })
+  .sort((a, b) => getDiscountPercent(b.price, b.compareAtPrice) - getDiscountPercent(a.price, a.compareAtPrice))
   .slice(0, 4);
 export const newArrivalProducts = [products[6], products[7], products[2], products[5]];
 
 export const maxDiscountPercent = Math.round(
-  Math.max(
-    0,
-    ...products
-      .filter((p) => p.compareAtPrice && p.compareAtPrice > p.price)
-      .map((p) => ((p.compareAtPrice! - p.price) / p.compareAtPrice!) * 100)
-  )
+  Math.max(0, ...products.map((p) => getDiscountPercent(p.price, p.compareAtPrice)))
 );
 
 export function findProductById(productId: string): Product | undefined {

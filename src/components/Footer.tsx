@@ -1,6 +1,7 @@
 import { Linking, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme';
+import { useToastStore } from '../store/toastStore';
 
 const POLICY_LINKS = ['Privacy Policy', 'Refund Policy', 'Terms of Service', 'Shipping Policy'];
 
@@ -8,6 +9,12 @@ const ADDRESS = 'D-95, Industrial Focal Point, Chanalon, Kurali, District Mohali
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
 
 export default function Footer() {
+  const showToast = useToastStore((state) => state.showToast);
+
+  const openLink = (url: string, failureMessage: string) => {
+    Linking.openURL(url).catch(() => showToast(failureMessage));
+  };
+
   return (
     <View className="mt-xl gap-lg rounded-t-lg bg-primaryDark px-lg py-xl">
       <View className="items-center gap-1">
@@ -23,7 +30,7 @@ export default function Footer() {
 
       <View className="gap-sm border-t border-cream/10 pt-md">
         <TouchableOpacity
-          onPress={() => Linking.openURL('mailto:info@trueoils.in')}
+          onPress={() => openLink('mailto:info@trueoils.in', 'No email app found')}
           className="flex-row items-center gap-2"
           activeOpacity={0.7}
         >
@@ -32,7 +39,7 @@ export default function Footer() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => Linking.openURL('tel:+917696866691')}
+          onPress={() => openLink('tel:+917696866691', 'No phone app found')}
           className="flex-row items-center gap-2"
           activeOpacity={0.7}
         >
@@ -41,7 +48,7 @@ export default function Footer() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => Linking.openURL(MAPS_URL)}
+          onPress={() => openLink(MAPS_URL, 'No maps app found')}
           className="flex-row items-start gap-2"
           activeOpacity={0.7}
         >

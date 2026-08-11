@@ -7,6 +7,7 @@ import { RootStackParamList } from '../navigation/types';
 import { products } from '../data/products';
 import { findCollectionByHandle } from '../data/collections';
 import Header from '../components/Header';
+import ListingBanner from '../components/ListingBanner';
 import Footer from '../components/Footer';
 import SortSheet, { SortOption } from '../components/SortSheet';
 import ProductCard from '../components/home/ProductCard';
@@ -51,6 +52,8 @@ export default function ProductListingScreen({ route, navigation }: Props) {
       <Header showBackButton showPromoBanner={false} />
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+        <ListingBanner title={collection ? collection.title : undefined} />
+
         <View className="flex-row items-center justify-between px-lg pt-md">
           <View>
             <Text className="font-heading-semibold text-lg text-primaryDark">

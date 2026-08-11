@@ -48,37 +48,37 @@ export default function CartScreen({ navigation }: Props) {
             </TouchableOpacity>
           </View>
         ) : (
-          <View className="px-lg pt-sm">
-            {resolvedLines.map((line) => (
-              <CartLineItem
-                key={line.merchandiseId}
-                merchandiseId={line.merchandiseId}
-                quantity={line.quantity}
-                product={line.product}
-                variant={line.variant}
-              />
-            ))}
-          </View>
+          <>
+            <View className="px-lg pt-sm">
+              {resolvedLines.map((line) => (
+                <CartLineItem
+                  key={line.merchandiseId}
+                  merchandiseId={line.merchandiseId}
+                  quantity={line.quantity}
+                  product={line.product}
+                  variant={line.variant}
+                />
+              ))}
+            </View>
+
+            <View className="gap-sm border-t border-primary/10 px-lg py-md">
+              <View className="flex-row items-center justify-between">
+                <Text className="font-body-medium text-md text-primaryDark">Subtotal</Text>
+                <Text className="font-body-bold text-lg text-primaryDark">₹{subtotal.toFixed(2)}</Text>
+              </View>
+              <TouchableOpacity
+                disabled
+                className="items-center rounded-xs bg-accent/40 py-md"
+                accessibilityLabel="Checkout coming soon"
+              >
+                <Text className="font-body-bold text-base text-cream">Checkout — coming soon</Text>
+              </TouchableOpacity>
+            </View>
+          </>
         )}
 
         <Footer />
       </ScrollView>
-
-      {!isEmpty && (
-        <View className="gap-sm border-t border-primary/10 bg-cream px-lg py-md">
-          <View className="flex-row items-center justify-between">
-            <Text className="font-body-medium text-md text-primaryDark">Subtotal</Text>
-            <Text className="font-body-bold text-lg text-primaryDark">₹{subtotal.toFixed(2)}</Text>
-          </View>
-          <TouchableOpacity
-            disabled
-            className="items-center rounded-xs bg-accent/40 py-md"
-            accessibilityLabel="Checkout coming soon"
-          >
-            <Text className="font-body-bold text-base text-cream">Checkout — coming soon</Text>
-          </TouchableOpacity>
-        </View>
-      )}
     </View>
   );
 }

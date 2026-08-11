@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors } from '../../theme';
-import { Product } from '../../data/products';
+import { getDiscountPercent, Product } from '../../data/products';
 import { RootStackParamList } from '../../navigation/types';
 import QuickAddSheet from './QuickAddSheet';
 
@@ -17,9 +18,7 @@ export default function ProductCard({ product, containerClassName = 'w-[165px]' 
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const hasDiscount = !!product.compareAtPrice && product.compareAtPrice > product.price;
-  const discountPercent = hasDiscount
-    ? Math.round(((product.compareAtPrice! - product.price) / product.compareAtPrice!) * 100)
-    : 0;
+  const discountPercent = getDiscountPercent(product.price, product.compareAtPrice);
 
   return (
     <TouchableOpacity
@@ -28,17 +27,19 @@ export default function ProductCard({ product, containerClassName = 'w-[165px]' 
       onPress={() => navigation.navigate('ProductDetail', { productId: product.id })}
     >
       <View className="relative w-full overflow-hidden rounded-xs bg-creamMuted" style={{ aspectRatio: 1 }}>
-        <Image source={{ uri: product.images[0] }} className="h-full w-full" resizeMode="cover" />
+        <Image source={{ uri: product.images[0] }} className="h-full w-full" contentFit="cover" />
 
         {hasDiscount && (
-          <View className="absolute left-2 top-2 rounded-pill bg-primary px-2 py-[3px]">
-            <Text className="font-body-bold text-[10px] text-cream">{discountPercent}% off</Text>
-          </View>
-        )}
+          <>
+            <View className="absolute left-2 top-2 rounded-pill bg-primary px-2 py-[3px]">
+              <Text className="font-body-bold text-[10px] text-cream">{discountPercent}% off</Text>
+            </View>
 
-        <View className="absolute right-2 top-2 rounded-pill bg-cream/90 px-2 py-[3px]">
-          <Text className="font-body-medium text-[10px] text-primaryDark">Sale</Text>
-        </View>
+            <View className="absolute right-2 top-2 rounded-pill bg-cream/90 px-2 py-[3px]">
+              <Text className="font-body-medium text-[10px] text-primaryDark">Sale</Text>
+            </View>
+          </>
+        )}
       </View>
 
       <View className="mt-2 flex-row items-center gap-1">

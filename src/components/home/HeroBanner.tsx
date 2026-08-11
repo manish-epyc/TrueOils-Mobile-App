@@ -1,4 +1,5 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -9,18 +10,26 @@ export default function HeroBanner() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <View className="h-[480px] justify-end overflow-hidden bg-accent">
+    <View className="h-[340px] justify-end overflow-hidden bg-accent">
       <Image
         source={require('../../../assets/homepage-banner-bg.png')}
-        resizeMode="contain"
+        resizeMode="cover"
         className="absolute inset-0 h-full w-full"
       />
 
-      <View className="gap-sm px-lg pb-xl">
-        <Text className="font-heading-semibold text-display leading-[33px] text-cream">
-          The thoughtful harmony of <Text className="underline">science</Text> and{' '}
-          <Text className="underline">tradition</Text>.
-        </Text>
+      <LinearGradient
+        colors={['rgba(31,52,19,0)', 'rgba(31,52,19,0.55)', 'rgba(31,52,19,0.85)']}
+        locations={[0, 0.55, 1]}
+        className="absolute inset-0 h-full w-full"
+      />
+
+      <View className="gap-sm px-lg pb-lg">
+        <View className="max-w-[335px]">
+          <Text className="font-heading-semibold text-display leading-[33px] text-cream">
+            The thoughtful harmony of <Text className="underline">science</Text> and{' '}
+            <Text className="underline">tradition</Text>.
+          </Text>
+        </View>
         <Text className="max-w-[90%] font-body-regular text-md text-creamMuted80">
           Traditionally extracted oils, straight from the source to your kitchen.
         </Text>

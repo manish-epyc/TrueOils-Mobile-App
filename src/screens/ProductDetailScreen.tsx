@@ -3,8 +3,9 @@ import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors } from '../theme';
 import { RootStackParamList } from '../navigation/types';
-import { findProductById, Product } from '../data/products';
+import { findProductById, getDiscountPercent, Product } from '../data/products';
 import { useCartStore } from '../store/cartStore';
+import { useToastStore } from '../store/toastStore';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VariantPicker from '../components/VariantPicker';
@@ -72,6 +73,7 @@ function buildAccordionItems(product: Product): AccordionItemData[] {
 export default function ProductDetailScreen({ route }: Props) {
   const product = findProductById(route.params.productId);
   const addLine = useCartStore((state) => state.addLine);
+  const showToast = useToastStore((state) => state.showToast);
 
   const [selectedVariantId, setSelectedVariantId] = useState(product?.variants[0].id ?? '');
   const [quantity, setQuantity] = useState(1);
@@ -89,23 +91,15 @@ export default function ProductDetailScreen({ route }: Props) {
 
   const selectedVariant = product.variants.find((v) => v.id === selectedVariantId) ?? product.variants[0];
   const hasDiscount = !!selectedVariant.compareAtPrice && selectedVariant.compareAtPrice > selectedVariant.price;
-  const discountPercent = hasDiscount
-    ? Math.round(((selectedVariant.compareAtPrice! - selectedVariant.price) / selectedVariant.compareAtPrice!) * 100)
-    : 0;
+  const discountPercent = getDiscountPercent(selectedVariant.price, selectedVariant.compareAtPrice);
 
   return (
     <View className="flex-1 bg-cream">
       <Header showBackButton showPromoBanner={false} />
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        <View className="relative">
-          <ProductImageGallery images={product.images} />
-
-          {hasDiscount && (
-            <View className="absolute left-3 top-3 rounded-pill bg-primary px-2 py-1">
-              <Text className="font-body-bold text-xs text-cream">{discountPercent}% off</Text>
-            </View>
-          )}
+        <View className="pt-sm">
+          <ProductImageGallery images={product.images} badge={hasDiscount ? `${discountPercent}% off` : undefined} />
         </View>
 
         <View className="gap-md px-lg pt-md">
@@ -115,7 +109,7 @@ export default function ProductDetailScreen({ route }: Props) {
             <Text className="font-body-regular text-sm text-primaryMuted70">({product.reviewsCount} reviews)</Text>
           </View>
 
-          <Text className="font-heading-semibold text-xl text-textDark">{product.title}</Text>
+          <Text className="font-heading-semibold text-lg text-textDark">{product.title}</Text>
           <Text className="font-body-regular text-sm leading-5 text-primaryMuted70">{product.tagline}</Text>
 
           <View className="gap-sm">
@@ -128,7 +122,9 @@ export default function ProductDetailScreen({ route }: Props) {
           </View>
 
           <View className="flex-row items-center gap-2">
-            <Text className="font-body-bold text-xl text-primaryDark">₹{selectedVariant.price.toFixed(2)}</Text>
+            <Text className="font-body-bold text-primaryDark" style={{ fontSize: 26 }}>
+              ₹{selectedVariant.price.toFixed(2)}
+            </Text>
             {hasDiscount && (
               <Text className="font-body-regular text-sm text-primaryMuted70 line-through">
                 ₹{selectedVariant.compareAtPrice!.toFixed(2)}
@@ -158,7 +154,10 @@ export default function ProductDetailScreen({ route }: Props) {
           </View>
 
           <TouchableOpacity
-            onPress={() => addLine(`${product.id}-${selectedVariant.id}`, quantity)}
+            onPress={() => {
+              addLine(`${product.id}-${selectedVariant.id}`, quantity);
+              showToast(`Added ${product.title} to cart`);
+            }}
             className="flex-row items-center justify-center gap-2 rounded-xs bg-accent py-md"
             activeOpacity={0.85}
           >

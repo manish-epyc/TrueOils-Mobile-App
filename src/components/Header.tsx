@@ -20,7 +20,7 @@ export default function Header({ showPromoBanner = true, showBackButton = false 
   return (
     <SafeAreaView edges={['top']} className="bg-cream">
       {showPromoBanner && (
-        <View className="items-center bg-primary px-sm py-xs">
+        <View className="items-center bg-primary px-sm py-sm">
           <Text className="font-body-regular text-xs text-cream">
             The New Year's Sale <Text className="underline">Save up to {maxDiscountPercent}%</Text> on select oils
           </Text>
@@ -34,6 +34,7 @@ export default function Header({ showPromoBanner = true, showBackButton = false 
               onPress={() => navigation.goBack()}
               className="h-9 w-9 items-center justify-center rounded-pill bg-primary/[0.06]"
               accessibilityLabel="Go back"
+              focusable={false}
             >
               <Ionicons name="arrow-back" size={20} color={colors.primaryDark} />
             </TouchableOpacity>

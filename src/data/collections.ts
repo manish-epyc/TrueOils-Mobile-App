@@ -16,6 +16,7 @@ export const collections: Collection[] = [
   { id: '4', handle: 'coconut-oil', title: 'Coconut Oil', image: PLACEHOLDER_IMAGE, productIds: ['p5'] },
   { id: '5', handle: 'almond-oil', title: 'Almond Oil', image: PLACEHOLDER_IMAGE, productIds: ['p1', 'p8'] },
   { id: '6', handle: 'neem-oil', title: 'Neem Oil', image: PLACEHOLDER_IMAGE, productIds: ['p7'] },
+  { id: '7', handle: 'castor-oil', title: 'Castor Oil', image: PLACEHOLDER_IMAGE, productIds: ['p2'] },
 ];
 
 export function findCollectionByHandle(handle: string): Collection | undefined {

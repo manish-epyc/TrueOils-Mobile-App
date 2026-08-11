@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../theme';
 import { Product } from '../../data/products';
 import { useCartStore } from '../../store/cartStore';
+import { useToastStore } from '../../store/toastStore';
 import VariantPicker from '../VariantPicker';
 import BottomSheet from '../BottomSheet';
 
@@ -17,6 +19,7 @@ export default function QuickAddSheet({ visible, product, onClose }: Props) {
   const [selectedVariantId, setSelectedVariantId] = useState(product.variants[0].id);
   const [quantity, setQuantity] = useState(1);
   const addLine = useCartStore((state) => state.addLine);
+  const showToast = useToastStore((state) => state.showToast);
 
   const selectedVariant = product.variants.find((v) => v.id === selectedVariantId) ?? product.variants[0];
 
@@ -28,13 +31,14 @@ export default function QuickAddSheet({ visible, product, onClose }: Props) {
 
   const handleAddToCart = () => {
     addLine(`${product.id}-${selectedVariant.id}`, quantity);
+    showToast(`Added ${product.title} to cart`);
     handleClose();
   };
 
   return (
     <BottomSheet visible={visible} onClose={handleClose}>
       <View className="flex-row items-center gap-sm">
-        <Image source={{ uri: product.images[0] }} className="h-16 w-16 rounded-xs bg-creamMuted" resizeMode="cover" />
+        <Image source={{ uri: product.images[0] }} className="h-16 w-16 rounded-xs bg-creamMuted" contentFit="cover" />
         <View className="flex-1">
           <Text className="font-heading-medium text-md text-textDark" numberOfLines={1}>
             {product.title}
