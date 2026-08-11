@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Animated, Easing, View } from 'react-native';
-import { fontFamily, fontSize } from '../theme';
+import { Image } from 'expo-image';
+
+const LOGO_URL = 'https://trueoils.in/cdn/shop/files/White_TO_Logo.svg?height=60&v=1774588519';
 
 type Props = {
   minDurationMs?: number;
@@ -36,17 +38,9 @@ export default function LoadingScreen({ minDurationMs = 1600, onFinished }: Prop
 
   return (
     <View className="flex-1 items-center justify-center bg-primary">
-      <Animated.Text
-        style={{
-          fontFamily: fontFamily.script,
-          fontSize: fontSize.displayLg,
-          transform: [{ scale }],
-          opacity,
-        }}
-        className="text-cream"
-      >
-        Trueoils
-      </Animated.Text>
+      <Animated.View style={{ transform: [{ scale }], opacity }}>
+        <Image source={{ uri: LOGO_URL }} style={{ width: 180, height: 68 }} contentFit="contain" />
+      </Animated.View>
     </View>
   );
 }

@@ -330,6 +330,15 @@ export const topDiscountedProducts = [...products]
   .slice(0, 4);
 export const newArrivalProducts = [products[6], products[7], products[2], products[5]];
 
+export const maxDiscountPercent = Math.round(
+  Math.max(
+    0,
+    ...products
+      .filter((p) => p.compareAtPrice && p.compareAtPrice > p.price)
+      .map((p) => ((p.compareAtPrice! - p.price) / p.compareAtPrice!) * 100)
+  )
+);
+
 export function findProductById(productId: string): Product | undefined {
   return products.find((p) => p.id === productId);
 }

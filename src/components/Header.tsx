@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors } from '../theme';
 import { useCartStore } from '../store/cartStore';
 import { RootStackParamList } from '../navigation/types';
+import { maxDiscountPercent } from '../data/products';
 
 type Props = {
   showPromoBanner?: boolean;
@@ -21,7 +22,7 @@ export default function Header({ showPromoBanner = true, showBackButton = false 
       {showPromoBanner && (
         <View className="items-center bg-primary px-sm py-xs">
           <Text className="font-body-regular text-xs text-cream">
-            The New Year's Sale <Text className="underline">Save 40%</Text> on all Products
+            The New Year's Sale <Text className="underline">Save up to {maxDiscountPercent}%</Text> on select oils
           </Text>
         </View>
       )}
@@ -42,6 +43,7 @@ export default function Header({ showPromoBanner = true, showBackButton = false 
 
         <View className="flex-row items-center gap-sm">
           <TouchableOpacity
+            onPress={() => navigation.navigate('Search')}
             className="h-10 w-10 items-center justify-center rounded-pill bg-primary/[0.06]"
             accessibilityLabel="Search"
           >

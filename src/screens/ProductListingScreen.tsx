@@ -5,6 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors } from '../theme';
 import { RootStackParamList } from '../navigation/types';
 import { products } from '../data/products';
+import { findCollectionByHandle } from '../data/collections';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SortSheet, { SortOption } from '../components/SortSheet';
@@ -19,12 +20,20 @@ const SORT_LABELS: Record<SortOption, string> = {
   'rating-desc': 'Top Rated',
 };
 
-export default function ProductListingScreen({}: Props) {
+export default function ProductListingScreen({ route, navigation }: Props) {
   const [sort, setSort] = useState<SortOption>('featured');
   const [isSortSheetOpen, setIsSortSheetOpen] = useState(false);
 
+  const collectionHandle = route.params?.collectionHandle;
+  const collection = collectionHandle ? findCollectionByHandle(collectionHandle) : undefined;
+
+  const filteredProducts = useMemo(() => {
+    if (!collection) return products;
+    return products.filter((p) => collection.productIds.includes(p.id));
+  }, [collection]);
+
   const sortedProducts = useMemo(() => {
-    const list = [...products];
+    const list = [...filteredProducts];
     switch (sort) {
       case 'price-asc':
         return list.sort((a, b) => a.price - b.price);
@@ -35,7 +44,7 @@ export default function ProductListingScreen({}: Props) {
       default:
         return list;
     }
-  }, [sort]);
+  }, [filteredProducts, sort]);
 
   return (
     <View className="flex-1 bg-cream">
@@ -44,9 +53,11 @@ export default function ProductListingScreen({}: Props) {
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <View className="flex-row items-center justify-between px-lg pt-md">
           <View>
-            <Text className="font-heading-semibold text-lg text-primaryDark">Shop All</Text>
+            <Text className="font-heading-semibold text-lg text-primaryDark">
+              {collection ? collection.title : 'Shop All'}
+            </Text>
             <Text className="mt-0.5 font-body-regular text-xs text-primaryMuted70">
-              {products.length} products
+              {sortedProducts.length} product{sortedProducts.length === 1 ? '' : 's'}
             </Text>
           </View>
 
@@ -59,6 +70,17 @@ export default function ProductListingScreen({}: Props) {
             <Text className="font-body-medium text-xs text-primaryDark">{SORT_LABELS[sort]}</Text>
           </TouchableOpacity>
         </View>
+
+        {collection && (
+          <TouchableOpacity
+            onPress={() => navigation.setParams({ collectionHandle: undefined })}
+            className="mx-lg mt-sm flex-row items-center gap-1 self-start rounded-pill bg-primary/[0.06] px-sm py-1"
+            activeOpacity={0.7}
+          >
+            <Text className="font-body-medium text-xs text-primaryDark">{collection.title}</Text>
+            <Ionicons name="close" size={12} color={colors.primaryDark} />
+          </TouchableOpacity>
+        )}
 
         <View className="flex-row flex-wrap justify-between gap-y-lg px-lg pt-md">
           {sortedProducts.map((product) => (

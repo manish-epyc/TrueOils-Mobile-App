@@ -9,6 +9,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import ProductListingScreen from './src/screens/ProductListingScreen';
 import ProductDetailScreen from './src/screens/ProductDetailScreen';
 import CartScreen from './src/screens/CartScreen';
+import SearchScreen from './src/screens/SearchScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
 import { RootStackParamList } from './src/navigation/types';
 
@@ -39,6 +40,7 @@ export default function App() {
           <Stack.Screen name="ProductListing" component={ProductListingScreen} />
           <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
           <Stack.Screen name="Cart" component={CartScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
