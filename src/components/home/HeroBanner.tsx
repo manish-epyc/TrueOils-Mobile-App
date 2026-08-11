@@ -17,12 +17,6 @@ export default function HeroBanner() {
         className="absolute inset-0 h-full w-full"
       />
 
-      <LinearGradient
-        colors={['rgba(31,52,19,0)', 'rgba(31,52,19,0.55)', 'rgba(31,52,19,0.85)']}
-        locations={[0, 0.55, 1]}
-        className="absolute inset-0 h-full w-full"
-      />
-
       <View className="gap-sm px-lg pb-lg">
         <View className="max-w-[335px]">
           <Text className="font-heading-semibold text-display leading-[33px] text-cream">
