@@ -7,16 +7,16 @@ export type Collection = {
   productIds: string[];
 };
 
-const PLACEHOLDER_IMAGE = 'https://trueoils.in/cdn/shop/files/BAO_50_Front.jpg?v=1771582706&width=120';
+const placeholderImage = (lock: number) => `https://loremflickr.com/120/120/oliveoil,bottle?lock=${lock}`;
 
 export const collections: Collection[] = [
-  { id: '1', handle: 'mustard-oil', title: 'Mustard Oil', image: PLACEHOLDER_IMAGE, productIds: ['p4'] },
-  { id: '2', handle: 'groundnut-oil', title: 'Groundnut Oil', image: PLACEHOLDER_IMAGE, productIds: ['p6'] },
-  { id: '3', handle: 'flaxseed-oil', title: 'Flaxseed Oil', image: PLACEHOLDER_IMAGE, productIds: ['p3'] },
-  { id: '4', handle: 'coconut-oil', title: 'Coconut Oil', image: PLACEHOLDER_IMAGE, productIds: ['p5'] },
-  { id: '5', handle: 'almond-oil', title: 'Almond Oil', image: PLACEHOLDER_IMAGE, productIds: ['p1', 'p8'] },
-  { id: '6', handle: 'neem-oil', title: 'Neem Oil', image: PLACEHOLDER_IMAGE, productIds: ['p7'] },
-  { id: '7', handle: 'castor-oil', title: 'Castor Oil', image: PLACEHOLDER_IMAGE, productIds: ['p2'] },
+  { id: '1', handle: 'mustard-oil', title: 'Mustard Oil', image: placeholderImage(1), productIds: ['p4'] },
+  { id: '2', handle: 'groundnut-oil', title: 'Groundnut Oil', image: placeholderImage(2), productIds: ['p6'] },
+  { id: '3', handle: 'flaxseed-oil', title: 'Flaxseed Oil', image: placeholderImage(3), productIds: ['p3'] },
+  { id: '4', handle: 'coconut-oil', title: 'Coconut Oil', image: placeholderImage(4), productIds: ['p5'] },
+  { id: '5', handle: 'almond-oil', title: 'Almond Oil', image: placeholderImage(5), productIds: ['p1', 'p8'] },
+  { id: '6', handle: 'neem-oil', title: 'Neem Oil', image: placeholderImage(6), productIds: ['p7'] },
+  { id: '7', handle: 'castor-oil', title: 'Castor Oil', image: placeholderImage(7), productIds: ['p2'] },
 ];
 
 export function findCollectionByHandle(handle: string): Collection | undefined {

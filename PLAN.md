@@ -1,11 +1,11 @@
-# TrueOils App — Learning Project Plan
+# Bharat Oils App — Learning Project Plan
 
 ## Purpose
-Learning project to build a React Native e-commerce app on top of Shopify, modeled after the trueoils.in store. This app is **not** connected to the live trueoils.in Shopify store — it uses a separate Shopify Partner **development store** so nothing here can affect the client's production site.
+Learning project to build a React Native e-commerce app on top of Shopify, modeled loosely after a cold-pressed-oils storefront. This app is **not** connected to any client's live Shopify store — it uses a separate Shopify Partner **development store** so nothing here can affect a real production site.
 
 ## Data source
-- Shopify **Storefront API** (GraphQL), not scraping the live site.
-- Product/collection data seeded into the dev store via CSV import (Admin → Products → Import) using an export from trueoils.in.
+- Shopify **Storefront API** (GraphQL), not scraping any live site.
+- Product/collection data seeded into the dev store via CSV import (Admin → Products → Import).
   - CSV import is one-way (file → dev store only) — cannot write back to the live store.
   - Import must be run while logged into the **dev store's** admin, not the live store's.
 - Storefront API access token generated from a custom app scoped to the dev store only (Settings → Apps → Develop apps).
@@ -37,6 +37,6 @@ Learning project to build a React Native e-commerce app on top of Shopify, model
 8. Polish: loading/error states, image caching, pull-to-refresh
 
 ## Guardrails
-- Never use trueoils.in store domain or API tokens in this app's config.
+- Never use a real client's store domain or API tokens in this app's config.
 - All API credentials point to the Shopify Partner dev store only.
-- If the app is ever pointed at the live store, that must be an explicit, deliberate decision — not a default.
+- If the app is ever pointed at a live store, that must be an explicit, deliberate decision — not a default.

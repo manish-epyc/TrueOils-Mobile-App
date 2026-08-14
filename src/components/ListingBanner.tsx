@@ -14,13 +14,13 @@ export default function ListingBanner({ title, subtitle }: Props) {
         name="leaf"
         size={140}
         color={colors.cream}
-        style={{ position: 'absolute', right: -30, top: -20, opacity: 0.08, transform: [{ rotate: '18deg' }] }}
+        className="absolute -right-[30px] -top-[20px] rotate-[18deg] opacity-[0.08]"
       />
       <Ionicons
         name="water"
         size={70}
         color={colors.accent}
-        style={{ position: 'absolute', right: 60, bottom: -18, opacity: 0.15 }}
+        className="absolute -bottom-[18px] right-[60px] opacity-[0.15]"
       />
 
       <Text className="font-heading-semibold text-lg text-cream">{title ?? 'Pure. Cold-Pressed. Traditional.'}</Text>

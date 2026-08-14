@@ -13,7 +13,7 @@ export default function HomeScreen() {
   return (
     <View className="flex-1 bg-cream">
       <Header />
-      <ScrollView className="flex-1 bg-cream" contentContainerClassName="pb-10" showsVerticalScrollIndicator={false}>
+      <ScrollView className="flex-1 bg-cream" showsVerticalScrollIndicator={false}>
         <HeroBanner />
         <TrustBadges />
         <CollectionsSection />

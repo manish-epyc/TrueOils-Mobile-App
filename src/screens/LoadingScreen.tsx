@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { Animated, Easing, View } from 'react-native';
-import { Image } from 'expo-image';
-
-const LOGO_URL = 'https://trueoils.in/cdn/shop/files/White_TO_Logo.svg?height=60&v=1774588519';
+import { Animated, Easing, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../theme';
 
 type Props = {
   minDurationMs?: number;
@@ -37,10 +36,14 @@ export default function LoadingScreen({ minDurationMs = 1600, onFinished }: Prop
   }, [opacity, scale, minDurationMs, onFinished]);
 
   return (
-    <View className="flex-1 items-center justify-center bg-primary">
-      <Animated.View style={{ transform: [{ scale }], opacity }}>
-        <Image source={{ uri: LOGO_URL }} style={{ width: 180, height: 68 }} contentFit="contain" />
+    <View className="flex-1 items-center justify-center gap-md bg-primary">
+      <Animated.View
+        style={{ transform: [{ scale }], opacity }}
+        className="h-24 w-24 items-center justify-center rounded-full border border-cream/20 bg-cream/10"
+      >
+        <Ionicons name="water" size={52} color={colors.accent} />
       </Animated.View>
+      <Text className="font-script text-3xl text-cream">Bharat Oils</Text>
     </View>
   );
 }

@@ -30,9 +30,9 @@ export type Product = {
 };
 
 const PLACEHOLDER_IMAGES = [
-  'https://trueoils.in/cdn/shop/files/BAO_50_Front.jpg?v=1771582706&width=480',
-  'https://trueoils.in/cdn/shop/files/BAO_50_Front.jpg?v=1771582706&width=480&crop=left',
-  'https://trueoils.in/cdn/shop/files/BAO_50_Front.jpg?v=1771582706&width=480&crop=right',
+  'https://loremflickr.com/480/480/oliveoil,bottle?lock=101',
+  'https://loremflickr.com/480/480/oliveoil,bottle?lock=102',
+  'https://loremflickr.com/480/480/oliveoil,bottle?lock=103',
 ];
 
 function scale(base: number, factor: number) {
@@ -61,7 +61,7 @@ export const products: Product[] = [
     reviewsCount: 86,
     variants: makeVariants(['50ml', '100ml', '250ml', '500ml'], [1, 1.8, 4, 7.2], 175.5, 195),
     description:
-      'True Oils Bitter Almond Oil is cold-pressed from Gurbandi Prunus amygdalus kernels using a traditional kolhu, below 40°C. Potent and aromatic, it retains its natural nutty scent and full fatty acid profile, and is traditionally valued for hair, skin, and light culinary use.',
+      'Bharat Oils Bitter Almond Oil is cold-pressed from Gurbandi Prunus amygdalus kernels using a traditional kolhu, below 40°C. Potent and aromatic, it retains its natural nutty scent and full fatty acid profile, and is traditionally valued for hair, skin, and light culinary use.',
     benefits: [
       'Deeply nourishes and softens dry hair',
       'Rich in Vitamin E and antioxidants',
@@ -96,7 +96,7 @@ export const products: Product[] = [
     reviewsCount: 142,
     variants: makeVariants(['100ml', '200ml', '500ml'], [1, 1.8, 4], 225, 250),
     description:
-      'True Oils Castor Oil is cold-pressed from Ricinus communis seeds, exceptionally high in ricinoleic acid. Thick and rich, it is a strictly external-use oil, ideal for hair, skin, brows, and lashes.',
+      'Bharat Oils Castor Oil is cold-pressed from Ricinus communis seeds, exceptionally high in ricinoleic acid. Thick and rich, it is a strictly external-use oil, ideal for hair, skin, brows, and lashes.',
     benefits: [
       'Supports thicker-looking hair, brows and lashes over time',
       'Deeply moisturises dry skin and cuticles',
@@ -124,7 +124,7 @@ export const products: Product[] = [
     reviewsCount: 64,
     variants: makeVariants(['100ml', '250ml', '500ml'], [1, 2.2, 4], 117, 130),
     description:
-      'True Oils Flax Seed Oil is cold-pressed from premium flax seeds and cloth-filtered, unrefined. One of the richest plant sources of Omega-3 ALA, it is best used cold — heat degrades its delicate fatty acids.',
+      'Bharat Oils Flax Seed Oil is cold-pressed from premium flax seeds and cloth-filtered, unrefined. One of the richest plant sources of Omega-3 ALA, it is best used cold — heat degrades its delicate fatty acids.',
     benefits: [
       'One of the richest plant sources of Omega-3 (ALA)',
       'Supports heart, brain and skin health',
@@ -158,7 +158,7 @@ export const products: Product[] = [
     reviewsCount: 210,
     variants: makeVariants(['100ml', '250ml', '500ml', '1L'], [1, 2.2, 4, 7.5], 165, 185),
     description:
-      'True Oils Mustard Oil (Kachi Ghani) is traditionally kolhu-pressed below 40°C and free from argemone oil. Sharp, pungent, and full-bodied, it is a kitchen classic across Indian cooking, and is also used for hair care and body massage.',
+      'Bharat Oils Mustard Oil (Kachi Ghani) is traditionally kolhu-pressed below 40°C and free from argemone oil. Sharp, pungent, and full-bodied, it is a kitchen classic across Indian cooking, and is also used for hair care and body massage.',
     benefits: [
       'High smoke point — well suited to Indian cooking styles',
       'Rich in monounsaturated fats',
@@ -192,7 +192,7 @@ export const products: Product[] = [
     reviewsCount: 178,
     variants: makeVariants(['100ml', '250ml', '500ml'], [1, 2.2, 4], 210, 230),
     description:
-      'True Oils Cold Pressed Virgin Coconut Oil (Shudh Nariyal Tel) is extracted from premium dried coconut (copra) using a mechanical cold press process. Unlike RBD (refined, bleached, deodorised) coconut oil, this virgin variant is unrefined and cloth filtered, retaining its natural coconut aroma and full fatty acid profile. It is a healthy source of good fats, supports digestion, and is excellent for hair care, skin care, and cooking.',
+      'Bharat Oils Cold Pressed Virgin Coconut Oil (Shudh Nariyal Tel) is extracted from premium dried coconut (copra) using a mechanical cold press process. Unlike RBD (refined, bleached, deodorised) coconut oil, this virgin variant is unrefined and cloth filtered, retaining its natural coconut aroma and full fatty acid profile. It is a healthy source of good fats, supports digestion, and is excellent for hair care, skin care, and cooking.',
     benefits: [
       'Healthy source of good fat',
       'Improves immunity — strong agent for antibacterial, anti-fungal & anti-viral activity',
@@ -235,7 +235,7 @@ export const products: Product[] = [
     reviewsCount: 51,
     variants: makeVariants(['100ml', '250ml', '500ml'], [1, 2.2, 4], 190, 190),
     description:
-      'True Oils Groundnut Oil is traditionally kolhu-pressed from whole peanuts below 40°C. Mild and nutty, it is a versatile everyday cooking oil with a naturally high smoke point.',
+      'Bharat Oils Groundnut Oil is traditionally kolhu-pressed from whole peanuts below 40°C. Mild and nutty, it is a versatile everyday cooking oil with a naturally high smoke point.',
     benefits: [
       'High smoke point, ideal for frying and sauteing',
       'Good source of monounsaturated fat',
@@ -267,7 +267,7 @@ export const products: Product[] = [
     reviewsCount: 29,
     variants: makeVariants(['100ml', '250ml'], [1, 2.2], 145),
     description:
-      'True Oils Neem Oil is cold-pressed and unrefined, retaining its strong natural aroma and full compound profile. It is a strictly external-use oil, traditionally used for skin care and as a natural pest deterrent for plants.',
+      'Bharat Oils Neem Oil is cold-pressed and unrefined, retaining its strong natural aroma and full compound profile. It is a strictly external-use oil, traditionally used for skin care and as a natural pest deterrent for plants.',
     benefits: [
       'Traditionally used to support clear, healthy-looking skin',
       'A natural, chemical-free option for plant pest control',
@@ -294,7 +294,7 @@ export const products: Product[] = [
     reviewsCount: 96,
     variants: makeVariants(['100ml', '250ml', '500ml'], [1, 2.2, 4], 199, 260),
     description:
-      'True Oils Sweet Almond Oil is cold-pressed from premium sweet almonds. Gentle and lightweight, it absorbs easily and is suited to daily use on skin and hair, and light culinary use.',
+      'Bharat Oils Sweet Almond Oil is cold-pressed from premium sweet almonds. Gentle and lightweight, it absorbs easily and is suited to daily use on skin and hair, and light culinary use.',
     benefits: [
       'Lightweight — absorbs quickly without clogging pores',
       'Rich in Vitamin E and healthy fats',

@@ -58,9 +58,8 @@ export default function ProductImageGallery({ images, badge }: Props) {
             <View style={{ width: CARD_WIDTH, height: CARD_HEIGHT }} className="items-center justify-center p-lg">
               <Image
                 source={{ uri: item }}
-                style={{ borderRadius: 20 }}
-                className="h-full w-full"
-                contentFit="contain"
+                className="h-full w-full rounded-md"
+                contentFit="cover"
               />
             </View>
           )}
@@ -84,7 +83,6 @@ export default function ProductImageGallery({ images, badge }: Props) {
               >
                 <Image
                   source={{ uri }}
-                  style={{ borderRadius: 12 }}
                   className="h-full w-full bg-creamMuted"
                   contentFit="contain"
                 />

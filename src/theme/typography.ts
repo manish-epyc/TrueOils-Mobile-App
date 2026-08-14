@@ -1,6 +1,5 @@
-// Real brand fonts pulled from trueoils.in: Chicken Hotty (script/logo),
-// Playfair Display (serif headings, local files matching the site's exact
-// build), and Inter (body/UI text, via Google Fonts — open source, same font).
+// Chicken Hotty (script/logo), Playfair Display (serif headings), and Inter
+// (body/UI text, via Google Fonts).
 export const fontFamily = {
   script: 'ChickenHotty',
 

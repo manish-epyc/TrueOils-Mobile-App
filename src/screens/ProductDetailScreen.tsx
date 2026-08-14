@@ -122,7 +122,7 @@ export default function ProductDetailScreen({ route }: Props) {
           </View>
 
           <View className="flex-row items-center gap-2">
-            <Text className="font-body-bold text-primaryDark" style={{ fontSize: 26 }}>
+            <Text className="font-body-bold text-[26px] text-primaryDark">
               ₹{selectedVariant.price.toFixed(2)}
             </Text>
             {hasDiscount && (
