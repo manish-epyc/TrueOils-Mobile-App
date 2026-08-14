@@ -1,4 +1,5 @@
 import { ScrollView, Text, View } from 'react-native';
+import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../theme';
 import { testimonials } from '../../data/testimonials';
@@ -16,15 +17,23 @@ export default function Testimonials() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerClassName="gap-md px-lg">
         {testimonials.map((testimonial) => (
           <View key={testimonial.id} className="w-[260px] gap-sm rounded-sm bg-creamMuted p-md">
-            <View className="flex-row gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Ionicons
-                  key={i}
-                  name={i < testimonial.rating ? 'star' : 'star-outline'}
-                  size={13}
-                  color={colors.accent}
-                />
-              ))}
+            <View className="flex-row items-center gap-sm">
+              <Image
+                source={{ uri: testimonial.avatar }}
+                className="h-10 w-10 rounded-full"
+                contentFit="cover"
+                accessibilityLabel={testimonial.name}
+              />
+              <View className="flex-row gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Ionicons
+                    key={i}
+                    name={i < testimonial.rating ? 'star' : 'star-outline'}
+                    size={13}
+                    color={colors.accent}
+                  />
+                ))}
+              </View>
             </View>
 
             <Text className="font-body-regular text-sm italic leading-5 text-textDark" numberOfLines={5}>

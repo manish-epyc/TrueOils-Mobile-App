@@ -39,7 +39,9 @@ export default function Header({ showPromoBanner = true, showBackButton = false 
               <Ionicons name="arrow-back" size={20} color={colors.primaryDark} />
             </TouchableOpacity>
           )}
-          <Text className="font-script text-[28px] text-primaryDark">Trueoils</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')} accessibilityLabel="Go to home">
+            <Text className="font-script text-2xl text-primaryDark">Bharat Oils</Text>
+          </TouchableOpacity>
         </View>
 
         <View className="flex-row items-center gap-sm">

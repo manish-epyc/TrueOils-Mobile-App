@@ -26,7 +26,7 @@ export default function ProductCard({ product, containerClassName = 'w-[165px]' 
       activeOpacity={0.85}
       onPress={() => navigation.navigate('ProductDetail', { productId: product.id })}
     >
-      <View className="relative w-full overflow-hidden rounded-xs bg-creamMuted" style={{ aspectRatio: 1 }}>
+      <View className="relative aspect-square w-full overflow-hidden rounded-xs bg-creamMuted">
         <Image source={{ uri: product.images[0] }} className="h-full w-full" contentFit="cover" />
 
         {hasDiscount && (

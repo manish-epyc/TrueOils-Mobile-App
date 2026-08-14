@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TrueOils",
-    "slug": "trueoils-apps",
+    "name": "Bharat Oils",
+    "slug": "bharat-oils-apps",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,7 +17,7 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.trueoilsapps"
+      "package": "com.anonymous.bharatoilsapps"
     },
     "web": {
       "favicon": "./assets/favicon.png",

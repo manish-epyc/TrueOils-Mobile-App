@@ -87,7 +87,7 @@ export default function ProductListingScreen({ route, navigation }: Props) {
 
         <View className="flex-row flex-wrap justify-between gap-y-lg px-lg pt-md">
           {sortedProducts.map((product) => (
-            <View key={product.id} style={{ width: '48%' }}>
+            <View key={product.id} className="w-[48%]">
               <ProductCard product={product} containerClassName="w-full" />
             </View>
           ))}

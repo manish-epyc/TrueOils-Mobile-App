@@ -88,7 +88,7 @@ export default function SearchScreen({ navigation }: Props) {
             </Text>
             <View className="flex-row flex-wrap justify-between gap-y-lg px-lg pt-sm pb-xl">
               {results.map((product) => (
-                <View key={product.id} style={{ width: '48%' }}>
+                <View key={product.id} className="w-[48%]">
                   <ProductCard product={product} containerClassName="w-full" />
                 </View>
               ))}

@@ -5,7 +5,11 @@ export type Testimonial = {
   rating: number;
   quote: string;
   product: string;
+  avatar: string;
 };
+
+const avatarFor = (name: string) =>
+  `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=2f4323&color=f5f2eb&size=128&rounded=true&bold=true`;
 
 export const testimonials: Testimonial[] = [
   {
@@ -16,6 +20,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'The mustard oil is amazing. After only one use, my hair looks much better. After years of searching I have found my grail.',
     product: 'Mustard Oil (Kachi Ghani)',
+    avatar: avatarFor('Kamilla Jedrak'),
   },
   {
     id: 't2',
@@ -25,6 +30,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Finally a brand that shows lab reports instead of just claims. The castor oil worked wonders for my lashes.',
     product: 'Castor Oil',
+    avatar: avatarFor('Priya Sharma'),
   },
   {
     id: 't3',
@@ -34,6 +40,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'You can actually taste the difference in the cold-pressed groundnut oil versus refined ones. Cooking feels healthier now.',
     product: 'Groundnut Oil',
+    avatar: avatarFor('Arjun Mehta'),
   },
   {
     id: 't4',
@@ -42,5 +49,6 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     quote: 'Scanned the batch QR out of curiosity and the certificate actually matched the bottle. That sold me for life.',
     product: 'Flax Seed Oil',
+    avatar: avatarFor('Neha Kapoor'),
   },
 ];
